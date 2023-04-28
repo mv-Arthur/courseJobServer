@@ -8,6 +8,7 @@ import { loginValidator, regValidator } from "./validations.js";
 import checkAuth from "./utils/checkAuth.js";
 import { UserController } from "./controllers/UserController.js";
 import { TicketController } from "./controllers/TiketController.js";
+import router from "./routes/index.js";
 mongoose
   .connect(
     "mongodb+srv://malakhov051:1234@cluster0.yrgly4r.mongodb.net/airport?retryWrites=true&w=majority"
@@ -30,6 +31,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.use(express.json());
+app.use(router);
 app.use(cors());
 app.use("/uploads", express.static("uploads"));
 app.post(
