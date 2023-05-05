@@ -19,6 +19,17 @@ async function buildPDF(dataCallback, endCallback, req) {
 
   doc.fontSize(20).text("");
 
+  let str = "";
+  for (let i = 0; i < teacher.imageUrl.length; i++) {
+    if (i > 8) {
+      str += teacher.imageUrl[i];
+    }
+  }
+  console.log();
+
+  if (teacher.imageUrl) {
+    doc.image(path.resolve(__dirname, "..", "uploads", str));
+  }
   doc
     .fontSize(30)
     .font(path.resolve(__dirname, "fonts", "Roboto-Black.ttf"))
